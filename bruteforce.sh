@@ -4,16 +4,20 @@ echo 'Bash Version' ${BASH_VERSION}
 
 echo 'User:' $(WHOAMI)
 
-trap '' 2
+# trap '' 2
 
-lower='abcdefghijklmnopqrstuvwxyz'
-upper='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-numbers='1234567890'
-symbols='!@#$%^&*()_+'
+t=0
+y=0
+index=''
+lower=(abcdefghijklmnopqrstuvwxyz)
+upper=(ABCDEFGHIJKLMNOPQRSTUVWXYZ)
+numbers=(1234567890)
+symbols=(!@#$%^&*()_+;)
 bot=0
 password=0
 counter=0
 answer=''
+final=''
 
 read -p 'Enter a password: ' password
 
@@ -34,15 +38,32 @@ done
 while :
 do
 	if [ $bot != $password ]; then
-		((bot++)); ((counter++))
+		if [ $counter != 300 ]; then
+			((bot++)); ((counter++))
+			echo $counter
+		else
+			echo 'Bot Timed out!'
+			break
+		fi
 	else
+		echo 'The bot found the password in' $counter 'Tries!'
 		break
 	fi
 
 done
 
-echo 'The bot found the password in' $counter 'Tries!'
+while :
+do
+	until [ $x == $password[$t] ]; then
+	for x in ${lower[$y]}; do
+	if [ x == $password{$t} ]; then
+		final='{$final} ${x}'
+	else
+		((y++))
+	fi
+	
+done
 
-trap 2
+# trap 2
 
 echo 'Test Complete'
