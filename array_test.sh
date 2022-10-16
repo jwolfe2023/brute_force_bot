@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo 'Bash Version:' ${BASH_VERSION}
+
 x=0
 t=0
 y=0
